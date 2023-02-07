@@ -1,0 +1,17 @@
+/* 
+  Unidades de medida
+
+  Mais utilizadas
+
+  px -> Unidade de medida fixa
+
+  rem -> Unidade de media relativa ao NAVEGADOR do usuário - por padrão 1rem = 16px
+
+  % -> Unidade de medida relativa ao ELEMENTO PAI
+
+  viewport -> Unidade de medida relativa ao TAMANHO DA TELA em que a aplicação é exibida
+
+  existe também o
+  em -> Unidade de media relativa ao ELEMENTO PAI - por padrão 1rem = 16px
+*/
+

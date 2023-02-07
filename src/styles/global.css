@@ -1,0 +1,79 @@
+body {
+    width: 99vw;
+    height: 100vh;
+    font-family: 'Inter';
+}
+
+:root {
+    /* Colors */
+    --main-brand-color: #4263EB;
+    --secondary-brand-color: #364FC7;
+    --grey-800: #212529;
+    --grey-700: #495057;
+    --grey-600: #868E96;
+    --black-500: #0A0C0D;
+    --white-500: #FFFFFF;
+    --grey-200: #DEE2E6;
+    --grey-100: #F8F9FA;
+    --grey-opacity: rgba(33, 37, 41, 0.5);
+    --color-like: #D7443E;
+
+    /* Fonts */
+    --title1:
+        font-size: 1.75rem,
+        line-height: 2.5rem,
+        font-weight: 700;
+    --title2:
+        font-size: 1.25rem,
+        line-height: 1.5rem,
+        font-weight: 600;
+    --text1:
+        font-size: 1rem,
+        line-height: 1.75rem,
+        font-weight: 400;
+    --text2:
+        font-size: 0.875rem,
+        line-height: 1rem,
+        font-weight: 400;
+    --text3:
+        font-size: 0.75rem,
+        line-height: 1rem,
+        font-weight: 400;
+
+    /* Border-radius */
+    --border-radius: 4px;
+
+    /* Inputs */
+    --input-post-title:
+        width: 18.56rem,
+        height: 3.25rem,
+        padding: 1rem 1.25rem,
+        border: 0.1rem solid var(--grey-200),
+        cursor: pointer;
+
+    --textarea-post-description:
+        width: 18.75rem,
+        heigth: 8.12rem,
+        padding: 1.75rem 1.31rem 1.81rem 1.31rem,
+        border-radius: var(--border-radius);
+
+    /* Buttons */
+    --button-post-width: 3.37rem;
+    --button-post-height: 2.37rem;
+
+}
+
+button {
+    width: var(--button-post-width);
+    height: var(--button-post-height);
+    padding: 0 0.75rem;
+    background-color: var(--main-brand-color);
+    color: var(--white-500);
+    border: 2px solid var(--border-radius);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--secondary-brand-color);
+}

@@ -1,23 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./src/styles/reset.css" />
-    <link rel="stylesheet" href="./src/styles/reset.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- FONTE -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- CSS -->
+  <link rel="stylesheet" href="src/styles/reset.css" />
+  <link rel="stylesheet" href="src/styles/global.css" />
+  <link rel="stylesheet" href="src/styles/index.css" />
+  <link rel="stylesheet" href="src/styles/mobile.css" />
 
-    <title>Criando rede social</title>
-  </head>
-  <body></body>
+  <!-- FONTE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- JS -->
+  <script type="module" src="src/scripts/index.js" defer></script>
+
+  <title>Entrega 3 - Rede Social</title>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <nav>
+      <div class="nav__container">
+        <figure class="nav__logo">
+          <img src="src/assets/img/logo.svg" alt="Logo">
+        </figure>
+        <small class="nav__buttonExit">Sair</small>
+      </div>
+    </nav>
+
+    <header class="header__container">
+
+      <!-- <section class="header__sectionCreatePost">
+        <div id=user_1 class="header__dataUser">
+          <figure>
+            <img src="src/assets/img/user1.svg" alt="user">
+          </figure>
+          <div>
+            <h3>Samuel Leão</h3>
+            <p>Front end Engineer</p>
+          </div>
+        </div>
+        <form class="header__newPost">
+          <input class="header__title" type="text" placeholder="Digitar título do post" required="true">
+          <textarea class="header__text" placeholder="Digitar descrição do post" required="true"></textarea>
+          <button class="btn-newPost" type="button">Postar</button>
+        </form>
+      </section> -->
+
+      <section class="header__sectionSuggestionUsers">
+        <h2>Sugestões para você seguir</h2>
+        <ul class="header__suggestionUsers">
+          <!-- <li>
+            <div class="header__suggestionUser--user">
+              <figure>
+                <img src="src/assets/img/user2.svg" alt="User">
+              </figure>
+              <div>
+                <p>Carlos Lima</p>
+                <small>UX e UI Designer</small>
+              </div>
+              <button class="header__suggestionUser--follow">Seguir</button>
+              <button class="header__suggestionUser--following">Seguindo</button>
+            </div>
+          </li> -->
+        </ul>
+      </section>
+
+    </header>
+
+    <main>
+
+      <div class="main__container">
+
+        <h2 class="main__title">Posts</h2>
+
+        <ul class="main__cardPost">
+          <!-- <li id="post_1" class="main__post">
+            <div class="main__post--user">
+              <img src="src/assets/img/user3.svg" alt="User Photo">
+              <p>Samuel Persuhn</p>
+              <small>Front end Engineer</small>
+            </div>
+            <h1>Empresa de Tecnologia da Informação abre vagas para programa de estágio</h1>
+            <p>A Framework Digital, empresa mineira especializada em Tecnologia da Informação, irá iniciar o seu sexto
+              programa de estágio, com o prazo de inscrições entre os dias 08 e 28 de agosto.</p>
+            <div class="main__post--buttonModal">
+              <button id="showModal_1">Abrir Post</button>
+              <img class="main__dislike" src="src/assets/img/Vector (2).svg" alt="heart-icon">
+              <img class="main__like" src="src/assets/img/Vector (1).svg" alt="heart-icon-red">
+              <small>0</small>
+          </li> -->
+        </ul>
+
+      </div>
+
+      <dialog id="modalControl">
+        <!-- <div class="modal__container">
+          <div class="modal__user">
+            <img class="modal__image" src="src/assets/img/user6.svg" alt="User Photo">
+            <p class="modal__userName"></p>
+            <small class="modal__userStack"></small>
+
+          </div>
+          <img class="modal__closeModal" src="src/assets/img/x (1).svg" alt="X-Icon">
+          <h1 class="modal__title">Empresa de Tecnologia da Informação abre vagas para programa de estágio</h1>
+          <p class="modal__contentPost">A Framework Digital, empresa mineira especializada em Tecnologia da Informação,
+            irá iniciar o seu
+            sexto
+            programa de estágio, com o prazo de inscrições entre os dias 08 e 28 de agosto. O programa é conhecido
+            como Framework Padawans, com inspiração nos filmes Star Wars. Nas histórias, os iniciantes fazem
+            treinamentos para se tornar cavaleiros Jedi, que compõem o lado bom da força.</p>
+        </div> -->
+      </dialog>
+
+  </div>
+
+  </main>
+
+  </div>
+
+
+</body>
+
 </html>
