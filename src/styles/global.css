@@ -1,6 +1,6 @@
 body {
     width: 99vw;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: 'Inter';
 }
 
@@ -19,37 +19,18 @@ body {
     --color-like: #D7443E;
 
     /* Fonts */
-    --title1:
-        font-size: 1.75rem,
-        line-height: 2.5rem,
-        font-weight: 700;
-    --title2:
-        font-size: 1.25rem,
-        line-height: 1.5rem,
-        font-weight: 600;
-    --text1:
-        font-size: 1rem,
-        line-height: 1.75rem,
-        font-weight: 400;
-    --text2:
-        font-size: 0.875rem,
-        line-height: 1rem,
-        font-weight: 400;
-    --text3:
-        font-size: 0.75rem,
-        line-height: 1rem,
-        font-weight: 400;
+    --title1: 1.75rem;
+    --title2: 1.25rem;
+    --text1: 1rem;
+    --text2: 0.875rem;
+    --text3: 0.75rem;
 
     /* Border-radius */
     --border-radius: 4px;
 
     /* Inputs */
-    --input-post-title:
-        width: 18.56rem,
-        height: 3.25rem,
-        padding: 1rem 1.25rem,
-        border: 0.1rem solid var(--grey-200),
-        cursor: pointer;
+    --input-post-padding: 1rem 1.25rem;
+    --input-post-height: 3.25rem;
 
     --textarea-post-description:
         width: 18.75rem,
@@ -58,7 +39,7 @@ body {
         border-radius: var(--border-radius);
 
     /* Buttons */
-    --button-post-width: 3.37rem;
+    --button-post-width: 4.31rem;
     --button-post-height: 2.37rem;
 
 }
@@ -66,7 +47,6 @@ body {
 button {
     width: var(--button-post-width);
     height: var(--button-post-height);
-    padding: 0 0.75rem;
     background-color: var(--main-brand-color);
     color: var(--white-500);
     border: 2px solid var(--border-radius);
@@ -76,4 +56,39 @@ button {
 
 button:hover {
     background-color: var(--secondary-brand-color);
+}
+
+.userData {
+    height: 3.25rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* .userData>figure {} */
+
+.userData>figure>img {
+    width: 3.4rem;
+    display: flex;
+    object-fit: cover;
+}
+
+.userData>div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.userData>div>p {
+    font-size: var(--title2);
+    font-weight: 600;
+    color: var(--grey-800);
+}
+
+.userData>div>small {
+    font-size: var(--text2);
+    font-weight: 400;
+    color: var(--grey-700);
 }

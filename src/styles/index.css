@@ -15,3 +15,136 @@
   em -> Unidade de media relativa ao ELEMENTO PAI - por padrão 1rem = 16px
 */
 
+.container {
+  width: 100%;
+}
+
+/* nav {} */
+
+.nav__container {
+  height: 76px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--grey-800);
+  position: fixed;
+  top: 0;
+}
+
+.nav__logo {
+  display: flex;
+  margin-left: 1.87rem;
+}
+
+.nav__buttonExit {
+  width: 28px;
+  height: 1rem;
+  margin-right: 1.87rem;
+  font-size: var(--text2);
+  font-weight: 400;
+  color: var(--white-500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__container,
+main {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-direction: column-reverse;
+  margin-left: 5%;
+}
+
+.header__container {
+  margin-top: 121px;
+}
+
+.header__newPost {
+  margin-top: 2.3rem;
+  width: 100%;
+  height: 16.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.27rem;
+}
+
+.header__title,
+.header__text {
+  border: 2px solid var(--grey-200);
+  border-radius: var(--border-radius);
+  color: var(--grey-600);
+  font-weight: 400;
+  font-size: var(--text1);
+  outline: none;
+}
+
+.header__title {
+  height: 52px;
+  padding: var(--input-post-padding);
+}
+
+.header__text {
+  height: 130px;
+  padding: 1.75rem 1.31rem;
+  resize: none;
+}
+
+.btn-newPost {
+  cursor: pointer;
+  height: var(--button-post-height);
+  width: var(--button-post-width);
+  border-radius: var(--border-radius);
+  padding: 1.2rem 1.2rem;
+  background-color: var(--grey-200);
+  border: 2px solid var(--grey-200);
+  color: var(--grey-600);
+  font-size: var(--text2);
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.header__sectionSuggestionUsers {
+  margin-top: 2.81rem;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.81rem;
+}
+
+.header__sectionSuggestionUsers>h2 {
+  font-size: var(--title2);
+  font-weight: 600;
+  color: var(--grey-800);
+}
+
+.header__suggestionUsers {
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+  display: flex;
+  gap: 3.81rem;
+}
+
+.header__suggestionUsers>li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header__buttons {
+  display: flex;
+}
+
+.header__suggestionUser--follow,
+.header__suggestionUser--following {
+  height: 28px;
+  width: 89px;
+  padding: 0 0.75rem;
+  font-size: var(--text2);
+}

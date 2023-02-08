@@ -17,15 +17,18 @@ function renderArrSuggestUsers(array) {
 // 2 - createCardSuggestUsers() - Função responsável por criar o card suggestUser via DOM:
 function createCardSuggestUsers(suggestUser) {
     let listSuggestUser = document.createElement('li');
+    let containerButton = document.createElement('div');
     let buttonFollow = document.createElement('button');
     let buttonFollowing = document.createElement('button');
 
+    containerButton.setAttribute('class', 'header__buttons');
     buttonFollow.setAttribute('class', 'header__suggestionUser--follow');
     buttonFollow.innerText = 'Seguir';
     buttonFollowing.setAttribute('class', 'header__suggestionUser--following');
     buttonFollowing.innerText = 'Seguindo';
 
-    listSuggestUser.append(createDataUser(suggestUser), buttonFollow, buttonFollowing);
+    listSuggestUser.append(createDataUser(suggestUser), containerButton);
+    containerButton.append(buttonFollow, buttonFollowing);
 
     return listSuggestUser;
 };
@@ -73,29 +76,32 @@ function createCardPost(post) {
     let contentPost = document.createElement('p');
     let containerFooterPost = document.createElement('div');
     let buttonOpenModal = document.createElement('button');
-    let imgDislike = document.createElement('img');
+    let imgLikeDefault = document.createElement('img');
     let imgLike = document.createElement('img');
     let countLike = document.createElement('small');
 
     listPost.id = `post_${post.id}`;
     listPost.setAttribute('class', 'main__post');
     postTitle.innerText = post.title;
-    contentPost.innerText = post.text;
+    contentPost.innerText = `${post.text.substring(0, 100)}...`;
     containerFooterPost.setAttribute('class', 'main__post--buttonModal');
     buttonOpenModal.id = `showModal_${post.id}`;
     buttonOpenModal.innerText = 'Abrir Post';
-    imgDislike.src = 'src/assets/img/Vector (2).svg';
-    imgDislike.alt = 'heart-icon';
+    imgLikeDefault.src = 'src/assets/img/Vector (2).svg';
+    imgLikeDefault.alt = 'heart-icon';
     imgLike.src = 'src/assets/img/Vector (1).svg';
     imgLike.alt = 'heart-icon-red';
     countLike.innerText = post.likes;
 
+    imgLikeDefault.dataset.postId = post.id; //Cria um atributo adicional chamado postId ao post e armazena o valor atribuido(id do post) no dataset.
+    imgLike.dataset.postId = post.id; //Cria um atributo adicional chamado postId ao post e armazena o valor atribuido(id do post) no dataset.
+
     listPost.append(createDataUser(post), postTitle, contentPost, containerFooterPost);
-    containerFooterPost.append(buttonOpenModal, imgDislike, imgLike, countLike);
+    containerFooterPost.append(buttonOpenModal, imgLikeDefault, imgLike, countLike);
 
     addEventButtonOpenPost(buttonOpenModal, post); //Evento button showModal
-    addEventLike(imgLike, countLike); //Evento para cada img like
-    addEventDislike(imgDislike, countLike); //Evento para cada img dislike
+    addEventslikeAndDislike(imgLikeDefault, imgLike, countLike); //Evento para cada img de likes (default e dislike)
+    selectImageLike(imgLikeDefault, imgLike, post.id, countLike);
 
     return listPost;
 };
@@ -243,23 +249,52 @@ function addEventCloseModal() {
     });
 };
 
-// 14 - addEventLike() - Soma 1 like ao evento de click:
-function addEventLike(imgLike, countLike) {
-    imgLike.addEventListener('click', (event) => {
-        let numberLikes = parseInt(countLike.innerText) + 1;
+// 14 - addEventslikeAndDislike():
+// Função adiciona evento em ambas as imagens (default-like, e dislike) e altera entre ambos os elementos, contabilizando o like ou dislike.
+let arrLikesHistory = [];
+function addEventslikeAndDislike(imgLikeDefault, imgLike, countLike) {
 
+    imgLike.addEventListener('click', (event) => {
+
+        let numberLikes = parseInt(countLike.innerText) - 1;
         countLike.innerText = numberLikes;
+
+        imgLike.style.display = 'none';
+        imgLikeDefault.style.display = 'block';
+
+        arrLikesHistory = arrLikesHistory.filter((postId) => { //Se o postId ja se encontra no arr, filtrar e retornar arr sem ele.
+
+            return postId != event.target.dataset.postId;
+
+        });
+    });
+
+    imgLikeDefault.addEventListener('click', (event) => {
+
+        let numberLikes = parseInt(countLike.innerText) + 1;
+        countLike.innerText = numberLikes;
+
+        arrLikesHistory.push(event.target.dataset.postId);
+
+        imgLikeDefault.style.display = 'none';
+        imgLike.style.display = 'block';
     });
 };
 
-// 15 - addEventDislike() - Soma 1 like ao evento de click:
-function addEventDislike(imgDislike, countLike) {
-    imgDislike.addEventListener('click', (event) => {
-        let numberLikes = parseInt(countLike.innerText) - 1;
+// 15 - selectImageLike():
+// Função que seleciona a imagem correta e atualiza o número de likes(fora do database) mesmo após adicionar novo post.
+function selectImageLike(imgLikeDefault, imgLike, postId, countLike) {
 
-        countLike.innerText = numberLikes;
-    });
-}
+    if (arrLikesHistory.includes(postId.toString())) {
+        imgLikeDefault.style.display = 'none';
+
+        let numberLikesRed = parseInt(countLike.innerText) + 1; //Não estou atualizando a chave likes do objeto(segundo seu ) no database.
+        countLike.innerText = numberLikesRed;
+
+    } else {
+        imgLike.style.display = 'none';
+    };
+};
 
 renderArrSuggestUsers(suggestUsers);
 renderArrPosts(posts);
