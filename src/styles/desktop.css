@@ -111,4 +111,8 @@
     #modalControl {
         width: 30%;
     }
+
+    .main__container {
+        width: 65%;
+    }
 }

@@ -92,11 +92,11 @@ function createCardPost(post) {
 
     let cutContentPost = post.text.indexOf('.');
 
-    if (cutContentPost != -1) {  //Caso não encontra o (.)
-        post.text = post.text.substring(0, cutContentPost);
+    if (cutContentPost === -1) {  //Caso não encontra o (.)
+        cutContentPost = post.text.length;
     };
 
-    contentPost.innerText = `${post.text}...`;
+    contentPost.innerText = `${post.text.substring(0, cutContentPost)}...`;
     containerFooterPost.setAttribute('class', 'main__post--buttonModal');
     buttonOpenModal.id = `showModal_${post.id}`;
     buttonOpenModal.innerText = 'Abrir Post';
