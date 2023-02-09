@@ -93,7 +93,6 @@ main {
 }
 
 .btn-newPost {
-  cursor: pointer;
   height: var(--button-post-height);
   width: var(--button-post-width);
   border-radius: var(--border-radius);
@@ -109,12 +108,18 @@ main {
   align-self: flex-end;
 }
 
+.btn-newPost:hover {
+  background-color: var(--grey-200);
+  border: 2px solid var(--grey-200);
+  color: var(--grey-800);
+}
+
 .header__sectionSuggestionUsers {
   margin-top: 2.81rem;
-  height: 250px;
+  height: 210px;
   display: flex;
   flex-direction: column;
-  gap: 3.81rem;
+  gap: 2rem;
 }
 
 .header__sectionSuggestionUsers>h2 {
@@ -125,10 +130,9 @@ main {
 
 .header__suggestionUsers {
   height: 100%;
-  width: 100%;
   overflow-x: scroll;
   display: flex;
-  gap: 3.81rem;
+  gap: 1.5rem;
 }
 
 .header__suggestionUsers>li {
@@ -137,14 +141,198 @@ main {
   justify-content: space-between;
 }
 
+.header__suggestionUsers--user {
+  width: 225px;
+  height: 100%;
+}
+
+.header__suggestionUsers--user>.userData {
+  height: 100%;
+}
+
+.header__suggestionUsers--user>.userData>div>p {
+  width: 150px;
+}
+
 .header__buttons {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .header__suggestionUser--follow,
 .header__suggestionUser--following {
-  height: 28px;
-  width: 89px;
+  height: 30px;
+  width: 92px;
   padding: 0 0.75rem;
   font-size: var(--text2);
+  font-weight: 600;
+  color: var(--white-500);
+  border-radius: calc(var(--border-radius)/2);
+}
+
+.header__suggestionUser--following {
+  border: 1px solid var(--main-brand-color);
+  background-color: var(--main-brand-color);
+}
+
+.header__suggestionUser--follow {
+  height: 100%;
+  border: 1px solid var(--grey-800);
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+  color: var(--grey-800);
+}
+
+main {
+  margin-top: 45px;
+  height: 100%;
+  margin-bottom: 45px;
+}
+
+.main__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.main__title {
+  font-size: var(--title1);
+  font-weight: 700;
+  height: 40px;
+  color: var(--grey-800);
+  display: flex;
+  align-items: center;
+}
+
+.main__cardPost {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.main__post {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.main__post>.userData {
+  height: 15%;
+}
+
+.main__post>h1 {
+  width: 100%;
+  height: 45%;
+  font-size: var(--title1);
+  font-weight: 700;
+  color: var(--grey-800);
+  line-height: 2.5rem;
+}
+
+.main__post>p {
+  width: 100%;
+  height: 30%;
+  font-size: var(--text1);
+  font-weight: 400;
+  color: var(--grey-700);
+  line-height: 1.75rem;
+}
+
+.main__post--buttonModal {
+  height: 10%;
+  display: flex;
+  gap: 2rem;
+}
+
+.main__post--buttonModal>button {
+  width: 6rem;
+  height: 2.37rem;
+  padding: 0 12px;
+  border: 2px solid var(--grey-800);
+  background-color: var(--grey-800);
+  border-radius: calc(var(--border-radius)/2);
+  font-size: var(--text2);
+}
+
+.main__post--containerLikes {
+  width: 68px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 6px;
+}
+
+.main__post--containerLikes>small {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: var(--text2);
+  font-weight: 400;
+  color: #000000;
+}
+
+.modal__container {
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 2rem;
+}
+
+.modal__user {
+  display: flex;
+  height: 10%;
+  width: 100%;
+  margin-top: 2rem;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.modal__user>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__image {
+  width: 52px;
+}
+
+.modal__closeModal {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--grey-100);
+  padding: 0.5rem;
+  position: absolute;
+  right: 0;
+}
+
+.modal__userName {
+  font-size: var(--title2);
+  font-weight: 600;
+  color: var(--grey-800);
+}
+
+.modal__userStack {
+  font-size: var(--text2);
+  font-weight: 400;
+  color: var(--grey-700);
+}
+
+.modal__title {
+  height: 40%;
+  font-size: var(--title1);
+  font-weight: 700;
+  color: var(--grey-800);
+  line-height: 2.5rem;
+}
+
+.modal__contentPost {
+  height: 50%;
+  font-size: var(--text1);
+  font-weight: 400;
+  color: var(--grey-700);
+  line-height: 1.75rem;
 }

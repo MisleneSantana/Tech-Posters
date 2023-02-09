@@ -1,8 +1,8 @@
 export const users = [
   {
     id: 1,
-    user: "Samuel Leão",
-    stack: "Front end Engineer",
+    user: "Mislene Santana",
+    stack: "Fullstack Development in formation",
     img: "./src/assets/img/user1.svg",
   },
   {

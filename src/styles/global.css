@@ -32,12 +32,6 @@ body {
     --input-post-padding: 1rem 1.25rem;
     --input-post-height: 3.25rem;
 
-    --textarea-post-description:
-        width: 18.75rem,
-        heigth: 8.12rem,
-        padding: 1.75rem 1.31rem 1.81rem 1.31rem,
-        border-radius: var(--border-radius);
-
     /* Buttons */
     --button-post-width: 4.31rem;
     --button-post-height: 2.37rem;
@@ -78,7 +72,9 @@ button:hover {
 .userData>div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 0.5rem;
+    height: 100%;
 }
 
 .userData>div>p {
@@ -91,4 +87,15 @@ button:hover {
     font-size: var(--text2);
     font-weight: 400;
     color: var(--grey-700);
+}
+
+#modalControl {
+    width: 80%;
+    border: transparent;
+    border-radius: calc(var(--border-radius)*2);
+}
+
+#modalControl::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
 }

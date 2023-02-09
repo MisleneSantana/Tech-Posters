@@ -17,17 +17,20 @@ function renderArrSuggestUsers(array) {
 // 2 - createCardSuggestUsers() - Função responsável por criar o card suggestUser via DOM:
 function createCardSuggestUsers(suggestUser) {
     let listSuggestUser = document.createElement('li');
+    let containerUser = document.createElement('div');
     let containerButton = document.createElement('div');
     let buttonFollow = document.createElement('button');
     let buttonFollowing = document.createElement('button');
 
+    containerUser.setAttribute('class', 'header__suggestionUsers--user');
     containerButton.setAttribute('class', 'header__buttons');
     buttonFollow.setAttribute('class', 'header__suggestionUser--follow');
     buttonFollow.innerText = 'Seguir';
     buttonFollowing.setAttribute('class', 'header__suggestionUser--following');
     buttonFollowing.innerText = 'Seguindo';
 
-    listSuggestUser.append(createDataUser(suggestUser), containerButton);
+    listSuggestUser.append(containerUser, containerButton);
+    containerUser.appendChild(createDataUser(suggestUser));
     containerButton.append(buttonFollow, buttonFollowing);
 
     return listSuggestUser;
@@ -76,6 +79,7 @@ function createCardPost(post) {
     let contentPost = document.createElement('p');
     let containerFooterPost = document.createElement('div');
     let buttonOpenModal = document.createElement('button');
+    let containerLikes = document.createElement('div');
     let imgLikeDefault = document.createElement('img');
     let imgLike = document.createElement('img');
     let countLike = document.createElement('small');
@@ -83,10 +87,14 @@ function createCardPost(post) {
     listPost.id = `post_${post.id}`;
     listPost.setAttribute('class', 'main__post');
     postTitle.innerText = post.title;
-    contentPost.innerText = `${post.text.substring(0, 100)}...`;
+
+    let cutContentPost = post.text.indexOf('.');
+
+    contentPost.innerText = `${post.text.substring(0, cutContentPost)}...`;
     containerFooterPost.setAttribute('class', 'main__post--buttonModal');
     buttonOpenModal.id = `showModal_${post.id}`;
     buttonOpenModal.innerText = 'Abrir Post';
+    containerLikes.setAttribute('class', 'main__post--containerLikes');
     imgLikeDefault.src = 'src/assets/img/Vector (2).svg';
     imgLikeDefault.alt = 'heart-icon';
     imgLike.src = 'src/assets/img/Vector (1).svg';
@@ -97,7 +105,8 @@ function createCardPost(post) {
     imgLike.dataset.postId = post.id; //Cria um atributo adicional chamado postId ao post e armazena o valor atribuido(id do post) no dataset.
 
     listPost.append(createDataUser(post), postTitle, contentPost, containerFooterPost);
-    containerFooterPost.append(buttonOpenModal, imgLikeDefault, imgLike, countLike);
+    containerFooterPost.append(buttonOpenModal, containerLikes);
+    containerLikes.append(imgLikeDefault, imgLike, countLike);
 
     addEventButtonOpenPost(buttonOpenModal, post); //Evento button showModal
     addEventslikeAndDislike(imgLikeDefault, imgLike, countLike); //Evento para cada img de likes (default e dislike)
@@ -165,7 +174,7 @@ function addNewPost(array, user) {
             likes: 0,
         };
 
-        array.push(newPost);
+        array.unshift(newPost);
         renderArrPosts(array);
 
         inputTitle.value = ''; //Reset value input
@@ -180,6 +189,7 @@ function renderModal() {
     let containerModal = document.createElement('div');
     let containerUser = document.createElement('user');
     let userPhoto = document.createElement('img');
+    let containerDataUser = document.createElement('div');
     let userName = document.createElement('p');
     let userStack = document.createElement('small');
     let buttonCloseModal = document.createElement('img');
@@ -199,7 +209,8 @@ function renderModal() {
 
     modal.appendChild(containerModal);
     containerModal.append(containerUser, buttonCloseModal, titlePost, textPost);
-    containerUser.append(userPhoto, userName, userStack);
+    containerUser.append(userPhoto, containerDataUser);
+    containerDataUser.append(userName, userStack);
 
     addEventCloseModal();     // Fechando o modal
 };
