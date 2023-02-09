@@ -33,6 +33,8 @@ function createCardSuggestUsers(suggestUser) {
     containerUser.appendChild(createDataUser(suggestUser));
     containerButton.append(buttonFollow, buttonFollowing);
 
+    followToFollowing(buttonFollow, buttonFollowing);
+
     return listSuggestUser;
 };
 
@@ -90,7 +92,11 @@ function createCardPost(post) {
 
     let cutContentPost = post.text.indexOf('.');
 
-    contentPost.innerText = `${post.text.substring(0, cutContentPost)}...`;
+    if (cutContentPost != -1) {  //Caso não encontra o (.)
+        post.text = post.text.substring(0, cutContentPost);
+    };
+
+    contentPost.innerText = `${post.text}...`;
     containerFooterPost.setAttribute('class', 'main__post--buttonModal');
     buttonOpenModal.id = `showModal_${post.id}`;
     buttonOpenModal.innerText = 'Abrir Post';
@@ -137,16 +143,18 @@ function createNewPost() {
     form.setAttribute('class', 'header__newPost');
 
     inputTitle.setAttribute('class', 'header__title');
+    inputTitle.id = 'title'; //Para pegar valor do input
     inputTitle.type = 'text';
     inputTitle.placeholder = 'Digitar título do post';
     inputTitle.required = true;
 
     inputText.setAttribute('class', 'header__text');
+    inputText.id = 'contentPost'
     inputText.placeholder = 'Digitar descrição do post';
     inputText.required = true;
 
     btnNewPost.setAttribute('class', 'btn-newPost');
-    btnNewPost.type = 'button';
+    btnNewPost.type = 'submit';
     btnNewPost.innerText = 'Postar';
 
     sectionNewPost.append(containerDataUser, form);
@@ -157,11 +165,15 @@ function createNewPost() {
 
 // 8 - addNewPost() - Adicionar novo post no main-container, abaixo dos demais posts:
 function addNewPost(array, user) {
-    let buttonPost = document.querySelector('.btn-newPost');
-    let inputTitle = document.querySelector('.header__title');
-    let inputText = document.querySelector('.header__text');
 
-    buttonPost.addEventListener('click', (event) => {
+    let form = document.querySelector('.header__newPost');
+
+    form.addEventListener('submit', (event) => {
+
+        event.preventDefault();
+
+        let inputTitle = event.target.title;
+        let inputText = event.target.contentPost;
 
         let newPost =
         {
@@ -306,6 +318,22 @@ function selectImageLike(imgLikeDefault, imgLike, postId, countLike) {
         imgLike.style.display = 'none';
     };
 };
+
+// 16 - followToFollowing():
+function followToFollowing(follow, unfollow) {
+    unfollow.style.display = 'none';
+
+    follow.addEventListener('click', (event) => {
+        follow.style.display = 'none';
+        unfollow.style.display = 'flex';
+    });
+
+    unfollow.addEventListener('click', (event) => {
+        follow.style.display = 'flex';
+        unfollow.style.display = 'none';
+    });
+};
+
 
 renderArrSuggestUsers(suggestUsers);
 renderArrPosts(posts);
