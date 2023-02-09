@@ -3,7 +3,7 @@ export const users = [
     id: 1,
     user: "Mislene Santana",
     stack: "Dev. Fullstack in formation",
-    img: "./src/assets/img/user1.svg",
+    img: "./src/assets/img/user9.png",
   },
   {
     id: 2,
